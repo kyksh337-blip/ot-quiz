@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>구약석의 방법론 기말 객관식 145문항</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9EDF1;--surface:#FFFFFF;--ink:#1B2230;--muted:#5C6676;--line:#CDD4DD;
+  --accent:#2F4A8A;--accent-ink:#FFFFFF;--accent-soft:#DCE3F2;
+  --ok:#1F7A55;--ok-soft:#DDF0E6;--bad:#B0303F;--bad-soft:#F6DFE2;
+  --serif:"Gowun Batang","Noto Serif KR","Apple SD Gothic Neo",serif;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161D;--surface:#1B212B;--ink:#E3E7EE;--muted:#9AA4B3;--line:#2E3745;
+    --accent:#93A8E8;--accent-ink:#12161D;--accent-soft:#25304A;
+    --ok:#5CC495;--ok-soft:#173528;--bad:#EE7F8C;--bad-soft:#3A1E24;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161D;--surface:#1B212B;--ink:#E3E7EE;--muted:#9AA4B3;--line:#2E3745;
+  --accent:#93A8E8;--accent-ink:#12161D;--accent-soft:#25304A;
+  --ok:#5CC495;--ok-soft:#173528;--bad:#EE7F8C;--bad-soft:#3A1E24;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:680px;margin:0 auto;padding:0 18px 48px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px}
+.bar-title{font-weight:600;font-size:.95rem;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-meta{font-size:.85rem;color:var(--muted);white-space:nowrap}
+.track{height:3px;background:var(--line)}
+.track>i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.iconbtn{border:1px solid var(--line);background:transparent;border-radius:8px;padding:5px 10px;font-size:.85rem;cursor:pointer}
+.iconbtn:hover{border-color:var(--accent)}
+
+/* start */
+.start{padding-top:56px}
+.start h1{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.25;margin:0 0 10px;letter-spacing:-.01em}
+.start .sub{color:var(--muted);margin:0 0 36px}
+.field{margin-bottom:26px}
+.field-label{font-weight:600;margin-bottom:10px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg button{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px;text-align:left;cursor:pointer}
+.seg button small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+.seg button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.btn{border:none;border-radius:10px;padding:13px 22px;font-weight:600;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:default}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px}
+
+/* question */
+.qhead{display:flex;align-items:baseline;gap:14px;margin:30px 0 14px}
+.qnum{font-family:var(--serif);font-weight:700;font-size:2.6rem;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.qpos{color:var(--muted);font-size:.88rem}
+.passage{font-family:var(--serif);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px 10px 10px 4px;padding:14px 16px;margin:0 0 16px;font-size:.96rem;line-height:1.75;white-space:pre-line;overflow-wrap:anywhere}
+.passage .ptag{display:block;font-family:var(--sans);font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.qtext{font-family:var(--serif);font-size:1.18rem;line-height:1.7;margin:0 0 20px;font-weight:700}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:13px 15px;cursor:pointer;line-height:1.55}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt .mk{flex:none;width:1.6em;font-weight:600;color:var(--muted)}
+.opt.sel{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+.opt.sel .mk{color:var(--accent)}
+.opt.right{border-color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok);background:var(--ok-soft)}
+.opt.right .mk{color:var(--ok)}
+.opt.wrong{border-color:var(--bad);box-shadow:inset 0 0 0 1px var(--bad);background:var(--bad-soft)}
+.opt.wrong .mk{color:var(--bad)}
+.verdict{margin:16px 0 0;padding:12px 15px;border-radius:10px;font-weight:600}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}
+.verdict.no{background:var(--bad-soft);color:var(--bad)}
+.nav{display:flex;gap:10px;margin-top:24px}
+.nav .btn{flex:1}
+
+/* grid */
+.gridpanel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:16px}
+.gridpanel p{margin:0 0 10px;font-size:.85rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px}
+.grid button{border:1px solid var(--line);background:transparent;border-radius:6px;padding:6px 0;font-size:.8rem;cursor:pointer;font-variant-numeric:tabular-nums}
+.grid button.done{background:var(--accent-soft);border-color:var(--accent)}
+.grid button.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.grid button.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.grid button.cur{outline:2px solid var(--ink);outline-offset:1px}
+
+/* result */
+.result{padding-top:44px}
+.score{font-family:var(--serif);font-weight:700;font-size:clamp(3rem,14vw,4.6rem);line-height:1;margin:0;font-variant-numeric:tabular-nums}
+.score span{font-size:.4em;color:var(--muted);font-weight:400}
+.pct{color:var(--muted);margin:10px 0 0}
+.wl{margin-top:30px}
+.wl h2{font-size:1rem;margin:0 0 10px}
+.wl ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.wl li button{display:flex;gap:12px;width:100%;text-align:left;background:transparent;border:none;border-bottom:1px solid var(--line);padding:11px 2px;cursor:pointer;align-items:baseline}
+.wl li button:hover{background:var(--surface)}
+.wl .n{font-family:var(--serif);font-weight:700;color:var(--accent);width:2.6em;flex:none;font-variant-numeric:tabular-nums}
+.wl .t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wl .a{flex:none;font-size:.88rem;color:var(--muted)}
+.wl .a b{color:var(--ok)}
+.empty{color:var(--muted)}
+@media (max-width:420px){
+  .seg{grid-template-columns:1fr}
+  .qnum{font-size:2.2rem}
+  .qtext{font-size:1.08rem}
+}
+@media (prefers-reduced-motion:reduce){.track>i{transition:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const MK=["①","②","③","④"];
+const PS={
+p102:{r:"102–103",t:"‘( ㄱ ) focuses its attention on the final form of the text itself. --- Its concern is not to establish a history of Hebrew literature in general, but to study the features of this peculiar set of religious texts in relation to their usage within the historical community of ancient Israel. --- ( ㄱ ) to the Hebrew bible does not make any dogmatic claims for the literature apart from the literature, as if these texts contained only timeless truths or communicated in a unique idiom, but rather it studies them as historically and theologically conditioned writings which were accorded a normative function in the life of this community.’"},
+p105:{r:"105–106",t:"‘( ㄱ ) tries to situate a biblical book or subsection in its proper social setting - taking into account the literary and historical relations between the parts and the whole. It further attempts to illuminate the text according to its explicit or implied social referents, in a manner similar to historical-critical method’s clarification of the political and religious reference points of texts.’"},
+p107:{r:"107–110",t:"다음 가나안 정복에 관한 네 가지 이론과 그 주장자들을 바르게 연결하시오."},
+p112:{r:"112–113",t:"( ㄱ ), sharing the outlook of new criticism about the primacy of the text itself, and often operating under the banner of ‘the final form of the text’, concerns itself with the way the language of the text is deployed to convey meaning. Its interests are in the devices of writing, in metaphor and parallelism, in narrative and poetic structures, in stylistic figures. In principle, but not often in practice in Hebrew Bible studies, it has regard to the rhetorical situation of the composition and promulgation of ancient texts and to their intended effect upon their audience. But, like new criticism, its primary focus is upon the texts and their own internal articulation rather than upon their historical setting."},
+p116:{r:"116–117",t:"‘Canonical criticism traces the history of the function of those authoritative traditions which ended up in one of the canons. In order to do so it uses all the valid and pertinent tools of biblical criticism, especially ( ㄱ ), but focuses on the believing communities at every stage along the way rather than only on the individual discreet geniuses, such as original thinkers, editors, redactors, and the like, whose hands may be evident in the process.’"},
+p118:{r:"118–121",t:"영어의 [ ㄱ ]는 흔히 여성이 종속되고 사회에서 소외되는 현상을 없애기 위한 운동을 전개하는 남녀 평등주의자, 여성 해방주의자, 여권 신장주의자, 여권주의자를 가리킨다.\n[ ㄴ ]이란 말은 일반적으로 남녀는 평등하므로 여성에 대한 모든 형태의 차별을 없애고 여성이 남성과 똑같은 권리와 기회를 가져야 한다고 주장하는 원리를 지지하는 여성 해방 운동을 가리킨다.\n[ ㄷ ]는 일반적으로 남성이 여성을 지배하고 조정하는 구조를 가리킨다.\n불란서의 여성신학은 남성을 중심으로 여기는 구조를 [ ㄹ ]라 하며 남근을 사회와 문화의 권위를 나타내는 것으로 이해한다."},
+p132:{r:"132–134",t:"(1) ( ㄱ ) : 성경 본문과 해석이 남성 중심적인 것이며 가부장제의 기능화에 봉사하는 것이라는 가정에서 출발. 성경의 권위를 받아들이기보다는 의심의 자세를 취해야 한다. 성경 안에 어떤 억압적인, 혹은 인종차별적인 요소들을 인식하고 이런 요소들을 변명하며 피하는 일을 하지 말아야 하며, 성경 본문 안에서 본문의 남성 중심적 언어 안에 숨겨질 수도 있는 어떤 반가부장적 잠재적 요인들을 정직하게 발견하려고 노력해야 함.\n(2) ( ㄴ ) : 오늘날 신앙 공동체에 대한 성경의 신학적 의의와 힘을 검토한다. 해석은 선포와 떨어질 수 없다. 본문들이 포괄적인 언어로 번역되기 전에 조심스런 선택의 과정이 있어야 한다. 성별 차별이나 가부장적 구조를 지지하는 본문들은 선포되어서는 안 된다. 남녀 모두 평등하게 확증하는 본문들만 예배 낭독용 성구집에 사용되어야 한다.\n(3) ( ㄷ ) : 성경의 역사를 여성 해방적 관점에서 역사적 비판적으로 재건하여 모든 성경 전승을 회복하려고 한다. 성경에서 남성 중심적 본문이나 가부장적 구조를 영구화하고 정당화하는 본문들이 버려져서는 안 된다. 더욱이 이런 본문들은 여성이 어떻게 억압받고 소외되었는가를 기억하는 자원이 되어야 한다. 이런 고난의 재해석을 기억의 해석학이라 부른다.\n(4) ( ㄹ ) : 성경의 해방의 역사에서 여성들의 적극적인 참여를 뜻한다. 역사적 상상력, 예술적 재창조, 새로운 예배와 의식을 통해 여성들이 성경 역사에 참여하게 한다. 과거 교회가 역사적으로 계속해서 성경 본문의 일부와 전통들을 의식화해 온 것처럼, 현재 교회는 성경 이야기를 다시 말하고 해석하여 성경의 선조 어머니들과 누이들을 축하할 의식을 창조적으로 형성해야 한다."},
+p143:{r:"143–145",t:"1753년 영국 옥스퍼드 대학교의 시학 교수 로우쓰가 제시한 히브리어 시의 세 가지 기본적인 평행법.\nㄱ. 2번째 행이 첫 번째 행을 반복하거나 의역하는 ( ㄱ ) parallelism.\nㄴ. 2번째 행이 첫 번째 행과 대조를 이루는 ( ㄴ ) parallelism.\nㄷ. 2번째 행이 첫 번째 행을 발전시키거나 연장시키는 ( ㄷ ) parallelism."}
+};
+const CR4=["Form Criticism","Canonical Criticism","Tradition Criticism","Redaction Criticism"];
+const RH4=["Rhetorical Criticism","Canonical Criticism","Structural Criticism","Social-Scientific Criticism"];
+const RR4=["Rhetorical Criticism","Reader Response Criticism","Structural Criticism","Social-Scientific Criticism"];
+const NA4=["Rhetorical Criticism","Narrative Criticism","Structural Criticism","Social-Scientific Criticism"];
+const MG4=["Muilenburg","Clines / Exum","Y. Gitay","P. Trible"];
+const CAN4=["Volkmar Fritz, J. Milgrom","G. E. Mendenhall, N. K. Gottwald, W. Dever","A. Alt, M. Noth, Y. Aharoni","W. F. Albright, G. E. Wright, J. Bright, Y. Yadin, A. Malamat"];
+const STORY4=["인물","줄거리","배경","독자"];
+const FIO4=["류터","러셀","트리블","피오렌자"];
+const HERM4=["의심의 해석학","선포의 해석학","회상의 해석학","창조적 실현의 해석학"];
+const LOW4=["synonymous","antithetic","synthetic","chiasmus"];
+const Q=[
+[1,"정경비평의 영어 명칭은?",["Redaction Criticism","Form Criticism","Canonical Criticism","Narrative Criticism"],3],
+[2,"브레버드 차일즈의 정경적 접근이 우선 살피는 것은?",["단락에 남은 외래어로 추정한 교역 경로","본문을 읽는 개별 독자의 심리적 반응","본문에 앞선 구전의 가장 이른 형태","공동체가 성경으로 받아들인 본문의 형태와 기능"],4],
+[3,"제임스 샌더스의 정경비평과 가장 가까운 연구 주제는?",["가구 규모와 토지 제도의 상관관계","한 연설의 반복과 대조가 만드는 설득 효과","서술자가 결말을 미루어 만들어 내는 긴장","권위 있는 전승이 여러 세대에 걸쳐 재해석된 과정"],4],
+[4,"차일즈와 샌더스의 차이를 가장 잘 설명한 것은?",["차일즈는 사본의 우열에, 샌더스는 저자 개인의 심리에 상대적으로 더 주목한다.","차일즈는 구전의 기원에, 샌더스는 서술의 속도에 상대적으로 더 주목한다.","차일즈는 수용된 정경 형태에, 샌더스는 정경 형성 과정에 상대적으로 더 주목한다.","차일즈는 독자 개인의 반응에, 샌더스는 시의 평행법에 상대적으로 더 주목한다."],3],
+[5,"오경이 가나안 입성을 서술하는 여호수아가 아니라 신명기로 끝난다는 점에 대한 정경적 질문은?",["모세의 마지막 연설은 어느 지역 방언으로 전승되었는가?","여호수아의 전투는 역사적으로 몇 년 동안 이어졌는가?","약속의 땅에 들어가기 전에 끝나는 구성이 오경의 읽기에 어떤 영향을 주는가?","가나안 고지대 취락의 인구는 얼마나 되었는가?"],3],
+[6,"구약 본문을 신약의 인용문과 정경적으로 비교할 때 적절한 절차는?",["신약 본문의 해석을 구약 원청중의 이해로 간주한다.","두 본문에서 언어가 다르다는 이유로 해석상의 관련을 배제한다.","인용된 한 문장으로 구약 책 전체의 의미를 확정한다.","구약 본문의 문맥과 신약의 인용 문맥을 각각 분석한 뒤 연결점을 논한다."],4],
+[7,"히브리 성경과 기독교 구약의 배열을 비교하는 연구에서 먼저 밝혀야 할 것은?",["각 책의 저자들이 서로 만난 적이 있는가?","각 책이 번역된 언어의 수는 얼마인가?","독자 가운데 누가 해당 책을 가장 많이 읽었는가?","어느 전통의 정경 범위와 책 배열을 논하는가?"],4],
+[8,"정경비평에서 ‘최종 형태’에 관심을 둔다는 말의 뜻으로 가장 적절한 것은?",["모든 사본 전통이 한 가지 표현만 보존했다고 전제한다.","정경에 포함된 책들의 편찬 연대가 같다고 전제한다.","가장 늦은 연대의 사본을 문학적으로 가장 우수하다고 판정한다.","어느 본문 형태를 읽는지 밝히고 그 형태의 배열과 기능을 해석한다."],4],
+[9,"평행 본문 두 곳이 같은 사건을 서로 다르게 평가한다. 정경적 읽기로 가장 설득력 있는 것은?",["두 기록의 평가를 하나로 통일할 수 있도록 한쪽의 특징을 배제한다.","각 책에서 평가 차이가 담당하는 기능을 살핀 뒤, 두 증언이 정경에 함께 보존된 의미를 논한다.","더 내적으로 일관된 평가를 골라 그것만 정경적 증언으로 인정한다.","더 늦은 형태를 확인하면 그 평가의 정경적 기능도 설명되었다고 본다."],2],
+[10,"정경비평과 역사비평을 상호 보완적으로 사용하는 예는?",["전승의 역사적 맥락을 검토한 뒤 현재 책의 배치가 부여하는 의미를 살핀다.","최종 형태의 의미를 설명한 뒤 이를 저자의 전기로 환원한다.","사본의 연대를 확인한 뒤 수용 공동체의 해석을 모두 동일하다고 본다.","전승의 형성 과정을 가정한 뒤 현재 본문의 배열은 분석하지 않는다."],1],
+[11,"한 책의 결말이 다른 책의 첫머리와 이어질 때, 그 연관을 정경적 논점으로 발전시키는 근거는?",["실제 정경 배열과 각 본문의 대응 표현을 제시하고 연결 효과를 설명한다.","오늘의 독자가 연상할 수 있다는 이유로 원저자의 의도를 확정한다.","두 결말이 비슷하므로 저자가 같았다고 본다.","서로 이웃한 책이므로 모든 주제가 같다고 가정한다."],1],
+[12,"본래 서로 다른 상황에서 나온 전승이 공동체에서 규범으로 읽히는 일을 묻는 핵심 개념은?",["시간적 생략","문학적 초점화","정경의 권위와 기능","반의적 평행법"],3],
+[13,"정경비평의 한계를 바르게 설명한 것은?",["정경비평은 구약과 신약의 관계를 논할 수 없다.","정경비평은 본문의 신학적 기능을 연구 대상에서 제외한다.","현재 배열을 해석했다고 해서 앞선 역사적 맥락이 자동으로 밝혀지지는 않는다.","정경비평은 책의 배열을 해석의 근거로 사용할 수 없다."],3],
+[14,"‘이 본문은 후대 공동체가 위기의 상황에서 다시 사용한 권위 있는 전승이다’라는 주장을 가장 잘 뒷받침할 자료는?",["두 전승의 언어가 같다는 사실만","이전 전승과 재사용 본문의 대응 및 새로운 문맥을 보여 주는 자료","현대 독자가 그 본문에 강하게 공감했다는 개인 기록","후대 본문의 문장이 더 짧다는 관찰만"],2],
+[15,"단락 내부의 줄거리보다 그 단락이 정경에 속한 다른 책과 맺는 관계가 중심인 경우의 접근은?",["정경비평","양식비평","이야기비평","자료비평"],1],
+[16,"사회과학비평의 영어 명칭은?",["Canonical Criticism","Reader-Response Criticism","Social-Scientific Criticism","Rhetorical Criticism"],3],
+[17,"강의에서 본문의 명시적·암시적 사회적 지시 대상을 살피는 접근에 연결된 학자는?",["노먼 갓월드","제임스 뮐렌버그","브레버드 차일즈","필리스 트리블"],1],
+[18,"사회과학비평의 중심 질문에 가장 가까운 것은?",["어느 사본이 더 이른 읽기를 보존하는가?","서술자가 어느 시점에 결말을 알려 주는가?","하나의 어구가 단락의 시작과 끝을 어떻게 감싸는가?","채무와 토지 제도가 본문 속 집단의 관계를 어떻게 형성하는가?"],4],
+[19,"군사적 정복설과 이주·정착설의 차이는?",["전자는 내부 사회 변화를, 후자는 국가 주도의 추방을 주요 설명으로 삼는다.","전자는 군사적 점령을, 후자는 점진적 이주와 정착을 주요 설명으로 삼는다.","전자는 토지 경작을, 후자는 왕실 제의를 주요 설명으로 삼는다.","전자는 정착을 다루고, 후자는 동일한 군사적 점령을 다른 말로 부른다."],2],
+[20,"강의 자료가 고전적 이주·정착설과 연결한 대표 학자는?",["윌리엄 올브라이트","조지 멘덴홀","알브레히트 알트","노먼 갓월드"],3],
+[21,"강의 자료가 고전적 군사적 정복설과 연결한 대표 학자는?",["마르틴 노트","노먼 갓월드","윌리엄 올브라이트","알브레히트 알트"],3],
+[22,"멘덴홀과 갓월드를 나란히 다룰 때 공통점에 대한 가장 적절한 진술은?",["두 사람 모두 한 차례 외부 군사 정복으로 모든 정착을 설명한다.","세부 설명까지 동일하며 두 가설의 근거도 같다.","두 사람 모두 초기 이스라엘 형성을 왕궁 행정 제도의 도입과 동일시한다.","세부 설명은 다르지만 가나안 내부의 사회 변화를 주요 변수로 삼는다."],4],
+[23,"가나안 정착의 보완 모형을 평가할 때 적절한 태도는?",["하나의 유적에서 관찰한 현상을 전 지역에 동일하게 적용한다.","지역마다 다른 자료를 비교하여 복수의 형성 경로가 작동했는지 검토한다.","문헌의 신학적 의도를 알면 정착의 모든 경로도 밝혀진다고 본다.","여러 경로를 말할 수 있으므로 개별 가설은 검증할 필요가 없다고 본다."],2],
+[24,"어떤 지역에서 화재 흔적이 나왔다. 가장 신중한 해석은?",["파괴 연대와 다른 자료를 비교해야 사건의 주체와 원인을 가늠할 수 있다.","화재층 자체가 정복 집단의 민족 정체성을 알려 준다.","파괴 뒤 새 토기가 나오면 정복 경로까지 확정할 수 있다.","같은 세기의 주변 도시도 모두 한 세력에게 파괴되었다고 본다."],1],
+[25,"한 유적의 파괴 연대가 주장된 정복 시점과 맞지 않는다. 자료를 어떻게 처리해야 하는가?",["정복 모형을 유지하기 위해 유적의 연대를 먼저 옮긴다.","문헌에 전투가 나오므로 연대 차이는 검토 대상에서 제외한다.","그 유적에 대한 가설을 수정하거나 보류하고 다른 유적의 자료를 독립적으로 평가한다.","한 유적의 불일치만으로 모든 정착·정복 논의를 끝낸다."],3],
+[26,"신명기 15장의 채무 면제 규정을 사회과학적으로 연구하는 질문은?",["이 장의 표제가 어느 사본에서 가장 길게 나타나는가?","채무 규정의 마지막 문장이 어떤 시적 운율을 이루는가?","채무와 예속이 가구 경제에 미치는 영향은 무엇인가?","후대 독자들이 이 장을 언제 처음 강해했는가?"],3],
+[27,"법전이 가난한 채무자를 보호한다고 해서 당시 보호가 널리 시행되었다고 단정할 수 없는 이유는?",["규범은 바람직한 질서를 제시하며 실제 관행과는 구분되기 때문이다.","실제 관행을 알면 법전의 목적은 따로 살필 필요가 없기 때문이다.","고대 법전에는 사회 제도가 전혀 반영되지 않기 때문이다.","현대 연구자는 규정 문구의 문법을 분석할 수 없기 때문이다."],1],
+[28,"고대 공동체에 현대의 계급 모델을 적용하는 방법으로 적절한 것은?",["현대의 집단 명칭과 법적 지위를 고대에 그대로 부여한다.","고대와 현대의 차이가 있으므로 어떤 비교 가설도 세우지 않는다.","자원과 권력 차이를 살피는 가설로 쓰고 시대·지역의 차이를 검증한다.","모델과 맞지 않는 자료를 예외로 돌리고 비교에서 지운다."],3],
+[29,"두 마을의 주택 크기에 차이가 있다는 자료에서 사회적 불평등을 논하려면 무엇이 더 필요한가?",["작은 집이 더 많다는 이유만으로 귀족과 농민의 법적 범주를 확정한다.","주택 면적 차이가 있다는 관찰을 불평등이 입증되었다는 진술로 바꾼다.","가장 큰 집 한 채의 면적만으로 지배계층의 규모를 계산한다.","가구 규모·건축 기능·연대 차이를 통제하고 저장 시설 등 독립 증거를 비교한다."],4],
+[30,"여호수아의 성읍 목록을 사회과학비평으로 읽는 질문은?",["성읍 이름이 나오는 다른 정경 책이 무엇인가?","성읍과 주변 촌락의 관계가 지역의 생산과 통치에 무엇을 시사하는가?","이 목록의 행이 어느 순서로 낭독되는가?","성읍 목록의 시작과 끝에 등장하는 음운 반복은 무엇인가?"],2],
+[31,"수사비평의 영어 명칭은?",["Canonical Criticism","Rhetorical Criticism","Source Criticism","Narrative Criticism"],2],
+[32,"강의에서 단락의 경계와 문체를 분석하는 수사비평에 연결된 학자는?",["제임스 샌더스","제임스 뮐렌버그","노먼 갓월드","버나드 라테간"],2],
+[33,"강의에서 이사야 1장 2–3절의 예언적 호소와 청중 설득을 연결한 학자는?",["예호슈아 기타이","미케 발","브레버드 차일즈","로버트 로우쓰"],1],
+[34,"수사비평에서 단락 경계를 정한 뒤 할 일로 적절한 것은?",["작은 단락들의 배치와 주요 표현이 논지에 기여하는 방식을 살핀다.","설득에 성공한 실제 청중의 비율을 본문만으로 계산한다.","비슷한 단어가 있는 모든 성경 구절을 같은 단락에 포함시킨다.","그 경계만으로 본문의 편집 연대를 확정한다."],1],
+[35,"단락 첫머리와 끝에 같은 표현이 돌아와 경계를 표시하는 장치는?",["교차대구","인클루시오","반의적 평행법","메리스무스"],2],
+[36,"두 번째 시 행이 첫 행의 내용을 유사한 뜻으로 되풀이하는 관계는 로우쓰의 전통적 분류에서 무엇인가?",["종합적 평행법","반의적 평행법","동의적 평행법","인클루시오"],3],
+[37,"두 번째 시 행이 첫 행과 대조되는 내용을 제시하는 관계는 무엇인가?",["메리스무스","종합적 평행법","동의적 평행법","반의적 평행법"],4],
+[38,"첫 행이 행동을 제시하고 둘째 행이 그 이유를 덧붙인다. 제시된 관계에 가장 가까운 전통적 범주는?",["인클루시오","종합적 평행법","반의적 평행법","동의적 평행법"],2],
+[39,"잠언 10장 1절이 지혜로운 아들과 미련한 아들이 부모에게 주는 영향을 나란히 놓는 효과는?",["행실의 상반된 결과를 대비해 교훈을 선명하게 만든다.","발화 시간과 이야기 시간의 차이를 주로 드러낸다.","두 장면이 다른 전승에서 왔다는 사실을 입증한다.","같은 결과를 표현만 달리하여 반복한다."],1],
+[40,"한 단락의 핵심 단위가 A–B–B′–A′ 순서로 대응한다. 가장 적절한 구조 명칭은?",["교차대구","인클루시오만 존재하는 구조","직선형 열거","연대기적 요약"],1],
+[41,"‘하늘과 땅’이 두 극점을 들어 세계 전체를 가리킨다면 그 용법은?",["반어","직유","메리스무스","인클루시오"],3],
+[42,"이사야 1장 2–3절에서 주인을 아는 가축과 깨닫지 못하는 이스라엘을 대비한 효과는?",["기대와 현실의 간격을 두드러지게 해 청중의 자기 인식을 촉구한다.","비유의 존재를 통해 실제 청중이 모두 설득되었음을 확인한다.","가축의 사육 방식을 설명해 당시 경제 구조를 직접 재구성한다.","대조된 두 표현을 사용해 청중에게 시간 순서만 알린다."],1],
+[43,"시편에서 같은 말이 첫 행과 끝 행에 나온다. 인클루시오로 판단하려면 무엇을 더 살펴야 하는가?",["두 행에 같은 수의 글자가 있는가?","해당 시편을 부른 사람이 누구인지 확정되었는가?","반복된 말이 전체 성경에서 가장 드물게 쓰였는가?","반복이 의미상 기능을 갖고 그 위치가 다른 구조 단서와 맞물리는가?"],4],
+[44,"어떤 설교 본문에 반복 명령과 청중을 향한 질문이 있다. 가장 타당한 수사적 결론은?",["본문이 응답을 유도하는 방식은 분석할 수 있으나 실제 청중의 반응은 별도 근거가 필요하다.","청중의 신원을 모르므로 본문의 설득 전략도 기술할 수 없다.","명령이 반복되므로 실제 청중이 저항했다고 판정한다.","청중을 설득하려는 표현이 있으므로 모든 청중이 동의했다고 본다."],1],
+[45,"뮐렌버그와 기타이를 비교할 때 가장 분명한 차이는?",["전자는 본문의 구성과 문체를, 후자는 담화의 설득 기능을 상대적으로 더 강조한다.","전자는 고고학 자료를, 후자는 정경 배열을 상대적으로 더 강조한다.","전자는 시편만 다루고, 후자는 구약 본문을 연구하지 않는다.","전자는 실제 독자 반응을, 후자는 자료의 연대를 상대적으로 더 강조한다."],1],
+[46,"로우쓰의 세 범주로 시를 읽을 때 주의할 점은?",["한 작품의 모든 행 쌍에 동일한 범주를 적용해야 한다.","종합적 평행법이면 두 행에 어떤 관계도 없다고 보아야 한다.","두 행이 동의 관계라면 둘째 행은 의미상 역할이 없다고 보아야 한다.","두 행이 유사하면서 새 의미를 보탤 수 있어 구체적인 관계를 함께 설명해야 한다."],4],
+[47,"‘청중이 아니라 하늘과 땅을 향해 말을 건다’는 예언의 도입을 수사적으로 분석하는 질문은?",["하늘과 땅의 표현이 어느 서기관에게서 처음 나왔는가?","발화 장소에 실제로 서 있던 사람 수를 어떻게 계산하는가?","우주를 증인처럼 부르는 표현이 뒤따르는 고발에 어떤 무게를 주는가?","이 표현의 존재만으로 본문이 어떤 연대에 쓰였는가?"],3],
+[48,"수사적 장치의 목록을 넘어서는 분석은?",["반복된 어휘가 단락의 여러 주장에 공통의 판단 기준을 부여한다고 논증한다.","평행법의 명칭을 붙인 뒤 두 행의 차이는 생략한다.","인클루시오를 찾은 뒤 단락의 모든 주제가 같다고 본다.","반복 어휘의 출현 횟수만 적고 분석을 마친다."],1],
+[49,"이야기비평의 영어 명칭은?",["Canonical Criticism","Rhetorical Criticism","Form Criticism","Narrative Criticism"],4],
+[50,"이야기에서 인물이 행동하는 시간·공간·사회적 환경을 가리키는 말은?",["독자","배경","줄거리","서술자"],2],
+[51,"사건들을 갈등과 인과관계로 이어 주는 구성은?",["서술자","정경적 배열","줄거리","공간적 배경"],3],
+[52,"이야기(story)와 담화(discourse)의 차이는?",["이야기는 사건과 인물의 관계를, 담화는 본문이 그것을 제시하는 방식을 뜻한다.","이야기는 기록된 문장만, 담화는 발굴된 물질문화를 뜻한다.","이야기는 실제 독자의 반응, 담화는 작가의 전기를 뜻한다.","이야기는 허구만, 담화는 역사적 사실만을 뜻한다."],1],
+[53,"실제 저자와 서술자의 구별로 옳은 것은?",["서술자는 본문 속 대화를 가장 많이 하는 인물을 뜻한다.","실제 저자는 이야기 속에 반드시 등장하고 서술자는 반드시 역사 속 인물이다.","저자와 서술자를 구별하려면 반드시 저자의 이름부터 알아야 한다.","실제 저자는 역사적 작성 주체이고 서술자는 본문에서 이야기를 전달하는 목소리다."],4],
+[54,"창세기 22장 1–2절이 독자에게 먼저 주는 정보가 만드는 효과는?",["이삭과 아브라함도 같은 설명을 들었다고 확정할 수 있게 한다.","시험이라는 사실을 아는 독자가 아브라함의 응답과 결말을 주목하게 한다.","이삭이 언제 구출될지를 독자에게 미리 알려 준다.","아브라함이 명령을 어떻게 느꼈는지 직접 설명한다."],2],
+[55,"하나의 장면을 한 인물이 보고 들은 범위로 제시하는 방식을 분석하는 핵심 개념은?",["수용사","초점화","인클루시오","정경화"],2],
+[56,"열왕기상 22장 1절이 전쟁이 없던 3년을 한 문장으로 처리한다. 이 서술 방식은?",["장면","회상","서술적 정지","요약"],4],
+[57,"여행을 떠날 때부터 목적지에 도착할 때까지 실제로 이야기 속 시간이 흐르지만 본문은 여정을 말하지 않는다. 이 방식은?",["장면","서술적 정지","요약","생략"],4],
+[58,"사건의 결말을 말한 뒤 그 원인이 된 이전 사건으로 돌아가는 서술은?",["동시 서술","예고","공간 대비","회상"],4],
+[59,"서술자가 한 인물을 ‘지혜로운 사람’이라고 직접 평가할 때 사용한 방법은?",["역사적 연대 설정","공간적 초점화","직접 인물 묘사","행동을 통한 간접 묘사"],3],
+[60,"열왕기상 22장의 왕복과 변장이 독자의 읽기에 미치는 효과는?",["두 왕의 정체를 아는 독자가 지휘관들의 오인을 알아차리게 한다.","왕복으로 오인한 지휘관들이 처음부터 진짜 아합을 추격했다고 알려 준다.","독자도 어느 왕이 변장했는지 결말까지 알 수 없게 한다.","여호사밧의 위험이 아합이 의도한 결과였음을 명시한다."],1],
+[61,"아합을 찾던 병거 지휘관들은 그를 놓치고, 한 사람이 특정하지 않고 쏜 화살은 아합을 맞힌다. 가장 잘 드러나는 장치는?",["상황의 아이러니","동의적 평행법","연대기적 생략","서술적 정지"],1],
+[62,"‘평안한 귀환’이 열왕기상 22장에서 갖는 효과를 가장 잘 설명한 것은?",["왕이 살아 돌아옴으로써 미가야의 예언이 틀렸다고 모두 확인한다.","왕이 귀환을 조건으로 내걸지만 그는 시신으로 돌아와 그 기대가 뒤집힌다.","미가야와 아합은 이 말로 동일한 결말을 예상한다.","왕의 귀환 여부가 독자에게 소개되지 않아 어떤 대비도 이루어지지 않는다."],2],
+[63,"아합이 변장하자 여호사밧이 오인되어 위험해졌다. 아합의 동기에 관해 타당한 진술은?",["여호사밧이 위험해졌으므로 그를 죽이려는 동기가 입증된다.","서술자가 동기를 밝히지 않으므로 변장 사실도 확정할 수 없다.","아합이 결말을 미리 알고 변장했다는 점이 명시되어 있다.","자기 보호 의도는 가능한 추론이지만, 여호사밧을 죽이려 했다는 동기는 본문이 밝히지 않는다."],4],
+[64,"룻기 2장 3절에서 룻이 보아스의 밭에 이르는 우연한 만남을 신학적으로 해석하려면?",["우연을 나타내는 표현 자체가 섭리라는 뜻이므로 이후 이야기는 볼 필요가 없다.","룻이 보아스의 정체와 계획을 처음부터 알았다고 본다.","그 표현이 독자의 기대를 만드는 방식을 살피고 후속 장면을 근거로 섭리의 독법을 논한다.","우연과 섭리는 함께 읽을 수 없으므로 이후에 나타나는 신학적 의미를 배제한다."],3],
+[65,"서술자가 인물의 발언을 직접 인용한다고 해서 그 말을 서술자의 평가로 볼 수 없는 이유는?",["서술자는 인물의 발언과 결말을 함께 제시할 수 없다.","인물의 주장은 다른 인물의 말과 사건의 결말에 의해 상대화될 수 있다.","직접 인용은 사본이 손상된 경우에만 나타난다.","직접 인용된 발언은 본문 밖 저자의 말로만 읽어야 한다."],2],
+[66,"내재된 독자와 실제 독자의 관계를 바르게 설명한 것은?",["내재된 독자는 본문이 요청하는 읽기의 역할이고 실제 독자는 역사 속에서 읽는 사람이다.","실제 독자는 언제나 본문이 요청하는 방식대로 읽는다.","내재된 독자는 본문의 실제 첫 독자 한 사람을 가리킨다.","내재된 독자는 이야기에 등장하는 인물과 언제나 동일하다."],1],
+[67,"독자반응비평의 영어 명칭은?",["Redaction Criticism","Social-Scientific Criticism","Narrative Criticism","Reader-Response Criticism"],4],
+[68,"독자반응비평과 가장 직접 관련되는 질문은?",["본문 이전의 자료는 어떤 편집을 거쳤는가?","두 사본 중 어느 쪽에 더 이른 읽기가 남았는가?","독자가 읽어 나가는 과정에서 본문의 의미를 어떻게 구성하는가?","한 도시의 세금 체계가 어떤 형태였는가?"],3],
+[69,"강의에서 소개한 발신자–메시지–수신자 도식에서 라테간이 독자반응 이론과 연결한 관계는?",["사본과 번역본의 계보 관계","본문과 수신자의 상호작용","편집자와 앞선 자료의 관계","발신자와 고고학 자료의 관계"],2],
+[70,"‘지평의 융합’이 가장 밀접하게 연결되는 학자는?",["브레버드 차일즈","한스게오르크 가다머","제임스 뮐렌버그","노먼 갓월드"],2],
+[71,"지평의 융합을 잘 보여 주는 읽기는?",["독자가 자신의 전제를 돌아보며 본문이 던지는 질문을 통해 이해를 수정한다.","현재 독자의 관심을 고대 본문에 그대로 투사한다.","독자가 자신의 시대와 관점을 완전히 제거할 수 있다고 전제한다.","서로 다른 해석자는 처음부터 같은 전제를 가진다고 본다."],1],
+[72,"독자가 사건의 결말을 읽기 전 예상과 읽은 뒤 판단을 기록하는 활동은 무엇을 드러내는가?",["가장 오래된 사본의 물리적 상태","실제 저자가 문장을 작성한 정확한 시간","새로운 정보가 읽기의 기대와 판단을 바꾸는 과정","전승의 지리적 이동 경로"],3],
+[73,"본문의 ‘빈틈’에 관한 설명으로 적절한 것은?",["빈틈을 발견하면 모든 추론이 같은 타당성을 갖는다.","본문이 명시하지 않는 연결을 독자가 근거를 따라 추론할 수 있는 자리다.","본문에 진술된 정보는 모두 빈틈에 해당한다.","사본에서 글자가 물리적으로 떨어져 나간 경우만 가리킨다."],2],
+[74,"같은 장면의 침묵을 두 독자가 각각 저항과 두려움으로 읽는다. 두 독법을 평가하는 방법은?",["두 사람이 서로 다르게 읽었으므로 어떤 근거도 비교하지 않는다.","사회적 위치가 더 널리 공유되는 독자의 답을 자동 채택한다.","둘 가운데 더 상세한 심리 서사를 꾸며 낸 쪽을 선택한다.","각 독법이 설명하는 표현과 문맥, 남는 반례를 비교한다."],4],
+[75,"본문의 수용사를 조사하는 주제로 적절한 것은?",["본문을 작성할 때 사용한 물감은 무엇이었는가?","본문 속 사건이 어떤 순서로 일어나는가?","어떤 서기관이 다른 자료의 문장을 먼저 기록했는가?","같은 본문이 서로 다른 시대의 설교와 그림에서 어떻게 재해석되었는가?"],4],
+[76,"Rezeptionsgeschichte와 Traditionsgeschichte의 일반적인 질문을 비교한 것은?",["전자는 본문이 어떻게 받아들여졌는지, 후자는 전승이 어떻게 전수되고 변형되었는지를 묻는다.","전자는 공간 배경을, 후자는 시의 평행법을 묻는다.","둘 다 모든 번역이 원문과 동일한지를 묻는 이름이다.","전자는 사본의 글자 차이를, 후자는 독자의 개인적 감정만을 묻는다."],1],
+[77,"18세기 설교가 어떤 본문을 정치적 저항의 근거로 인용한다. 가장 적절한 결론은?",["그 설교는 특정 시기의 수용을 보여 주며 본문의 초기 기능은 별도로 검토해야 한다.","같은 시대의 다른 설교도 모두 같은 뜻으로 사용했다고 볼 수 있다.","그 인용은 고대 저자가 동일한 정치 상황을 의도했음을 증명한다.","후대 설교에는 성경 본문의 해석으로 볼 만한 내용이 들어갈 수 없다."],1],
+[78,"내재된 독자에게 기대되는 반응과 실제 학급의 반응이 다를 때 적절한 조치는?",["작품의 독자 역할과 경험적 독자를 같은 것으로 간주한다.","학급의 반응이 다르므로 본문에는 어떤 단서도 없다고 본다.","본문의 읽기 단서와 학급의 반응을 구별하여 차이가 생긴 이유를 살핀다.","교수자의 첫 반응을 역사적으로 유일한 독자 반응으로 정한다."],3],
+[79,"‘저자–본문–독자’의 세 지평에서 독자반응비평을 설명한 것으로 가장 적절한 것은?",["세 지평을 구별하면 한 본문을 두 방법으로 분석할 수 없다.","저자의 전기만 연구하면 독자반응을 충분히 알 수 있다.","독자의 역할을 전면에 두되 본문의 단서와 저자에 대한 질문을 구별할 수 있다.","읽기 과정에서는 본문의 언어가 어떤 제약도 주지 않는다."],3],
+[80,"인터뷰 세 건으로 ‘모든 청년이 이 본문을 같은 방식으로 읽는다’고 결론 내렸다. 주요 문제는?",["세 건의 반응이 유사하면 본문이 시대를 초월해 하나의 뜻만 가진다.","독자의 반응은 개별 인터뷰로는 기록할 수 없다.","실제 독자에게 물었으므로 자료 자체가 항상 무효다.","일부 실제 독자의 반응을 모집단 전체에 일반화했다."],4],
+[81,"독자반응비평과 이야기비평이 같은 장면을 읽을 때의 질문을 잘 배분한 것은?",["전자는 문헌의 연대, 후자는 토지 분배의 고고학을 묻는다.","전자는 정경의 범위, 후자는 가구의 경제 규모를 묻는다.","전자는 사본 계보, 후자는 독자의 인구 통계를 묻는다.","전자는 독자의 기대 변화, 후자는 그 변화를 유도하는 정보의 배치를 묻는다."],4],
+[82,"여러 시대의 해석이 오늘의 독법에 계속 작용하는 방식을 연구할 때 가장 적절한 용어는?",["본문비평(Textual Criticism)","영향사(Wirkungsgeschichte)","양식비평(Form Criticism)","자료비평(Source Criticism)"],2],
+[83,"여성주의 비평의 영어 명칭은?",["Social-Scientific Criticism","Feminist Criticism","Reader-Response Criticism","Canonical Criticism"],2],
+[84,"영어 feminist와 feminism의 관계를 바르게 짝지은 것은?",["feminist는 성차별의 제도를, feminism은 성차별을 행하는 사람을 가리킨다.","feminist는 여성주의자 또는 여성주의적이라는 뜻이고, feminism은 여성주의를 가리킨다.","feminist는 해석 방법의 명칭으로만, feminism은 독자의 명칭으로만 쓰인다.","feminist는 가부장제를, feminism은 남성 중심주의를 가리킨다."],2],
+[85,"Patriarchy의 뜻에 가장 가까운 것은?",["본문을 읽는 사람이 시대에 따라 달라지는 현상","남성의 경험을 해석의 보편적 기준으로 삼는 관점 자체","두 시 행이 같은 생각을 발전시키는 문학적 관계","남성 중심의 권위가 가족과 사회 제도 안에서 유지되는 구조"],4],
+[86,"Androcentrism을 가장 직접 보여 주는 해석은?",["여성 인물의 행위가 사건 전개에 주는 효과를 살핀다.","남성 인물의 경험을 전체 공동체의 경험으로 간주하고 여성의 경험은 검토하지 않는다.","가족 내 재산권이 어느 성별에 집중되는지 문헌으로 조사한다.","같은 본문을 두 시대의 여성 독자가 다르게 읽었음을 기록한다."],2],
+[87,"남근을 상징적 권위와 의미 생산의 중심으로 삼는 질서를 가리키는 말은?",["Phallocentrism","Androcentrism","Reception history","Womanism"],1],
+[88,"‘Womanist’라는 용어를 널리 알린 작가는?",["필리스 트리블","앨리스 워커","메리 데일리","엘리자베스 쉬슬러 피오렌자"],2],
+[89,"우머니스트 성서해석에 가장 가까운 질문은?",["흑인 여성의 경험을 바탕으로 인종·성별·계급의 억압이 어떻게 교차하는가?","모든 여성의 경험에 공통된 단일 해석 틀을 어떻게 세울 수 있는가?","성별과 인종의 차이를 배제한 채 문학적 형식만을 어떻게 묘사하는가?","고대 사본의 글자 차이를 어느 계보로 설명할 수 있는가?"],1],
+[90,"『Texts of Terror』에서 여성 인물의 고난을 문학적으로 면밀히 읽은 학자는?",["메리 데일리","앨리스 워커","필리스 트리블","로즈메리 래드퍼드 류터"],3],
+[91,"사무엘하 13장의 다말 이야기에서 트리블의 접근을 적용한 질문은?",["다말이 여성 전체의 동일한 경험을 대표한다고 전제할 수 있는가?","다말의 고난을 독자의 위로를 위해 생략해도 되는가?","다말의 발언과 그 이후 침묵이 폭력과 주변 인물의 태도를 어떻게 드러내는가?","다말 이야기가 쓰인 가죽 사본의 제작 연대는 언제인가?"],3],
+[92,"의심·선포·회상·창조적 실현의 해석학을 결합한 학자는?",["앨리스 워커","메리 데일리","엘리자베스 쉬슬러 피오렌자","필리스 트리블"],3],
+[93,"본문과 해석 전통이 성별 권력관계를 당연한 것으로 만드는지 살피는 것은 피오렌자의 어느 범주인가?",["의심의 해석학","선포의 해석학","창조적 실현의 해석학","회상의 해석학"],1],
+[94,"오늘의 예배에서 어떤 본문을 어떤 방식으로 읽고 선포할지 평가하는 작업은?",["회상의 해석학","선포의 해석학","의심의 해석학","창조적 실현의 해석학"],2],
+[95,"여성의 고난과 참여가 사라진 역사를 남아 있는 자료로 다시 구성하는 일은?",["선포의 해석학","회상의 해석학","의심의 해석학","창조적 실현의 해석학"],2],
+[96,"성서 속 여성의 참여를 기억하기 위해 새로운 예배 의식을 창작하는 일은?",["회상의 해석학","의심의 해석학","선포의 해석학","창조적 실현의 해석학"],4],
+[97,"강의에서 후기의 탈기독교적 여성 해방 입장과 연결된 학자는?",["메리 데일리","로즈메리 래드퍼드 류터","레티 러셀","필리스 트리블"],1],
+[98,"본문에서 여성 인물의 대사가 거의 없다. 가장 신중한 해석은?",["대사가 없으므로 서사의 권력관계를 분석할 수 없다.","여성의 대사가 적은 모든 본문은 같은 이유로 그렇게 쓰였다고 본다.","대사가 없으므로 실제 여성에게도 의견과 주도권이 없었다고 결론 낸다.","서술이 여성의 목소리를 어떻게 제한하는지 말할 수 있으나 역사적 여성의 무행위까지 입증하지는 못한다."],4],
+[99,"사사기 19장의 폭력 서사를 오늘의 공동체에서 읽을 때 여성주의 비평에 가장 가까운 방법은?",["서사에 폭력이 등장하므로 저자와 모든 독자가 그것을 승인했다고 본다.","피해 인물의 위치와 기존 해석의 초점을 검토하고 오늘의 읽기가 피해를 어떻게 다루는지 묻는다.","피해 인물의 이름이 없으므로 인물의 역할은 분석에서 제외한다.","서사의 일부에 폭력이 있으므로 고대 사회 전체를 한 가지 양상으로만 설명한다."],2],
+[100,"같은 폭력 본문에 이야기비평과 여성주의 비평을 결합한 연구 설계는?",["인물의 대화가 줄거리에 미치는 효과만 정리하고 누가 말할 수 있는지는 제외한다.","본문의 권위 인정 여부만 결정하고 인물의 말과 서술 기능은 분석하지 않는다.","인물의 말과 정보 배치를 분석하고, 그 서술이 누구의 경험을 드러내거나 가리는지 검토한다.","성별 권력에 대한 현대 독자의 판단만 기록하고 구절의 배열과 발언은 검토하지 않는다."],3],
+[101,"정경비평을 영어로 바르게 표현한 것은?",CR4,2],
+[102,"위 ( ㄱ )에 들어갈 알맞은 말은?",CR4,2,{p:"p102"}],
+[103,"윗글은 누구의 정의인가?",["궁켈","샌더스","차일즈","엥그넬"],3,{p:"p102"}],
+[104,"다음은 어느 비평 방법론의 장점과 한계인가?",CR4,2,{b:"가. 이 비평 방법은 성경의 최종 형태의 본문이 가지고 있는 기능과 의미를 추구하므로 최종 형태의 본문의 가치를 높였으며, 이후 최종 형태의 본문에 더욱 관심을 가지게 하는 계기를 마련하였다.\n나. 이 비평은 구약성경과 신약성경 사이의 관계성을 이해하고 그 의미를 폭넓게 하는데 도움을 준다.\n다. 역사 비평학이 성경의 본문의 과거 의도에 초점을 두는 반면에 이 비평은 현재의 신학적 의미에 치중한다. 그러나 본문의 신학적인 의미는 본문의 원래의 배경 등에 대한 충분한 이해를 바탕으로 해야 한다. 그렇지 아니하면 그 의미는 주관적인 것으로 그칠 수 있다.\n라. 이 비평은 역사 비평학의 본문의 역사의 재구성과는 달리 최종 형태의 분석에 초점을 둔다. 그러나 본문의 최종 형태가 반드시 이전의 형태보다 본문의 의미를 더욱 분명하게 전달한다고 할 수는 없다. 본문의 충분한 이해를 위해서는 최종 형태뿐만 아니라 이전 형태의 역사 즉 본문의 배경도 알아야 한다. 따라서 이 비평의 과정을 중요시하는 이도 출애굽기 주석에서 역사 비평학을 활용하고 있다.\n이 비평의 이런 한계점들은 다른 모든 공시적 방법론에 마찬가지로 적용된다. 따라서 통시적 방법론과 공시적 방법론이 서로 그 결과를 활용하고 한계점들을 보충할 때 본문의 뜻을 충분히 드러낼 수 있다."}],
+[105,"위 ( ㄱ )에 들어갈 말은?",["Rhetorical Criticism","Canonical Criticism","Structural Criticism","Social-Scientific Criticism"],4,{p:"p105"}],
+[106,"윗글은 누구의 정의인가?",["N. K. Gottwald","B. S. Childs","Y. Gitay","P. Trible"],1,{p:"p105"}],
+[107,"군사적 정복설 (   )",CAN4,4,{p:"p107"}],
+[108,"이주, 정착, 침투설 (   )",CAN4,3,{p:"p107"}],
+[109,"혁명설 (   )",CAN4,2,{p:"p107"}],
+[110,"보완 이론 (   )",CAN4,1,{p:"p107"}],
+[111,"수사비평을 영어로 바르게 표현한 것은?",RH4,1],
+[112,"위 ( ㄱ )에 들어갈 말은?",RH4,1,{p:"p112"}],
+[113,"위를 주장한 사람은?",MG4,2,{p:"p112"}],
+[114,"다음은 누구의 수사비평 방법을 요약한 것인가?",MG4,1,{b:"첫째 — 본문의 단락을 정한다. 이때 인클루시오가 중요한 역할을 한다.\n둘째 — 한 단락으로 구분된 본문을 여러 작은 단락으로 나눈 후, 각 단락의 구조와 사상을 분석한다. 평행법, 교차대구법, 반복법과 불변화사 등의 수사적 장치들이 활용된다.\n셋째 — 작은 단락들 사이의 구조와 사상의 연결을 관찰한다.\n넷째 — 구조와 사상을 모두 연결시켜 본문의 주제들을 살펴본다."}],
+[115,"다음은 누구의 주장에 대한 설명인가?",MG4,3,{b:"가. 사 1:2–3절의 본문을 가지고 예언의 연설적·웅변적인 호소를 예증함.\n나. 청중의 사고 형태를 변화시키기 위해 청중을 설득하는 것을 목표로 삼음.\n다. 성경의 담화가 가진 전달의 특성을 예증함(독자들/청중들에게 호소하려고 함).\n라. 담화의 효과적 전달 — 전략과 기교를 조직적으로 연구할 수 있게 하는 특수한 문학적 방법을 요구한다."}],
+[116,"위는 누구의 정의인가?",["궁켈","샌더스","차일즈","엥그넬"],2,{p:"p116"}],
+[117,"위 ( ㄱ )에 들어갈 알맞은 말은?",CR4,3,{p:"p116"}],
+[118,"위 [ ㄱ ]에 들어갈 알맞은 말은?",["Feminist","Sexist","Womanist","Terrorist"],1,{p:"p118"}],
+[119,"위 [ ㄴ ]에 들어갈 알맞은 말은?",["Feminism","Sexist","Womanist","Terrorist"],1,{p:"p118"}],
+[120,"위 [ ㄷ ]에 들어갈 알맞은 말은?",["Feminism","Sexist","Patriarchy","Terrorist"],3,{p:"p118"}],
+[121,"위 [ ㄹ ]에 들어갈 알맞은 말은?",["Feminism","Sexist","Patriarchy","Phallocentrism"],4,{p:"p118"}],
+[122,"다음 중 독자반응 비평과 관련 깊은 이론은?",["방출이론","수용이론","저항이론","저자이론"],2],
+[123,"독자반응 비평을 영어로 바르게 표현한 것은?",RR4,2],
+[124,"다음 중 관계없는 것을 고르시오.",["Rezeptionsgeschichte","Transformationsgeschichte","Wirkungsgeschichte","Traditionsgeschichte"],4],
+[125,"다음은 어느 비평 방법론에 대한 정의인가?",NA4,2,{b:"이 비평이란 용어는 넓게는 지난 70년대 말 이후 다양한 방법론적인 관점에서 가끔 성경의 역사 비평적 해석과 반대되는 문학 비평적 해석으로 사용되어 왔다. 이 비평가들은 본문을 저자와 해석자와 관계없이 해석할 수 있는 실체로 이해한다. 이 비평은 관습적인 구조들을 식별하고 줄거리를 결정하고 인물 묘사의 전개, 관점의 구별, 언어 놀이를 드러내고, 이 모두를 전반적인 주제에 연결시키기 위해서 본문을 자세히 읽는 것에서 본문의 의미를 발견하려고 한다. 이 비평은 내재된 저자가 내재된 독자에게 전달하려는 의미를 밝혀내려는 것이다. 이런 방법은 실제 저자가 기록한 본문을 실제 독자가 읽고 해석할 때 어떤 능동적인 역할을 기대하는 독자 반응 비평과는 다르다."}],
+[126,"다음은 이야기 요소 중 어느 것에 대한 설명인가?",STORY4,3,{b:"등장인물이 행동하기에 적합한 상황을 설정해 주는 이야기의 한 요소이다. 등장인물의 행동이 언제 어디서 어떻게 일어나는지를 말해준다. 주로 이야기의 분위기를 형성하는 역할을 하며, 주로 한 이야기 단락을 해석하는 데 결정적 역할을 한다.\n아브람스(M. M. Abrams) — 이것을 공간적, 시간적, 사회적 상황으로 구분한다. ‘이것’은 이야기 등장인물이 생활하는 물리적 환경과 그 환경을 구성하는 기둥이나 가구 등을 가리킨다.\n발(M. Bal) — 실내(보호, 안전, 감금을 의미함)와 실외(위험, 자유를 의미함)의 대조(시골과 도시, 고독과 사교, 육지와 바다)가 이야기의 이것에 적합한 하나의 역동적인 것이라고 한다. 그리고 경계선이 대조된 장소를 잇는 특별한 역할을 한다고 하였다."}],
+[127,"다음은 이야기 요소 중 어느 것에 대한 설명인가?",STORY4,2,{b:"이야기는 서정시와 잠언처럼 비시간적 이미지 등과는 달리 이것이 특징이다. 이것은 이야기의 의미가 전달되는 구성의 힘이나 원칙이다. 이것은 전개, 갈등, 복잡화, 절정, 해결로 구성된다. 등장인물과 이것은 이야기 연구의 주된 요소이며, 관계는 단순히 인물들이 줄거리를 구성하는 것이 아니다. 이야기를 구성하는 인물들 안에 있는 힘인 욕망과 야망이 그것을 구성하는 움직임과 변화에 동기를 부여한다.\n첫째 — 등장인물이 이것의 근본적인 기능으로 여긴다. 등장인물 묘사의 어떤 복잡성도 그 이야기 장르에 의해서 이미 이것 안에서 그 등장인물의 위치에 종속된다.\n둘째 — 등장인물을 이야기의 필수 조건으로 본다. 이것이 독자를 완전히 낯선 곳으로 데려갈 때도 등장인물들 자신의 세계의 관점에서 등장인물들을 확인하게 된다.\n셋째 — 이것과 등장인물 사이에 우선순위를 두지 않고 둘이 서로 나누어질 수 없다."}],
+[128,"다음은 어느 비평 방법론의 장점인가?",NA4,2,{b:"첫째, 성경 본문 자체에 초점을 둔 본문 중심적 해석 방법이다. 따라서 본문 형성 이전의 자료 층이나 자료의 구성 단계를 밝혀 내지 않아도 전체 이야기에 비추어서 본문 자체를 읽고 이해할 수 있게 한다.\n둘째, 신앙 공동체와 밀접한 연관성을 가진다. 최종 형태의 본문을 신앙 공동체가 그들의 신앙과 삶에 권위 있는 것으로 인정하고 본문 자체 안에서 내재된 독자의 관점에서 본문을 해석하여 신앙의 관점에서 생긴 주석을 제공한다.\n셋째, 역사적 배경이 불확실한 본문에 통찰력을 주며, 가설이 아닌 주어진 이야기로 시작하며, 본문의 역사적 증거에 대해서 어떤 가치가 주어진다고 해도 본문은 하나님의 참된 뜻을 가진 이야기로 읽혀질 수 있다고 여긴다.\n넷째, 역사 비평을 검증하고 균형을 이루게 한다. 내재된 독자의 관점에서 본문을 해석하려고 하지만 그 관점이 현대 독자의 관점과 언제나 일치하지는 않는다."}],
+[129,"다음 (  ) 안에 들어갈 단어는?",["Feminist","Sexist","Womanist","Terrorist"],3,{b:"종교 연구에서 아프리카 계통의 미국인 여성 해방 신학자들은 워커(A. Walker)의 (  )라는 용어를 도입하여 여성 신학이 백인 여성들의 정치적 운동과 이론적 사상을 넘어선 것이라는 사실을 알리려고 했다."}],
+[130,"다음은 어느 비평에 대한 정의인가?",["Rhetorical Criticism","Narrative Criticism","Structural Criticism","Feminist Criticism"],4,{b:"남성 중심적인 이미지로 가득 찬 기독교 전통에서 남성 우월주의를 반대하는 것을 넘어서서 여성의 관점에서 여성을 낮추는 문화를 비평하고 남녀가 모두 똑같은 인간으로서 평등하다는 사실을 인식하도록 하는 데 있다. 기본적으로 여성의 정치적, 사회적, 경제적, 종교적 권리에 관한 문제와 관심에 관련된 본문에 집중한다. 이처럼 남성 중심적인 본문에 들어 있는 증거를 분석하고, 여성의 삶과 소리가 실제로 본문에 의해서 억눌려온 방식들을 자세히 드러내어서, 여성의 소리가 이런 본문에서 어떻게 발견되고 읽혀지고 알려질 수 있는가를 묻는다. 여성이 소외된 증거와 남성이 본문을 다룬 것을 드러낼 뿐만 아니라, 그러한 문화 자체를 지배해온 계급 제도를 고칠 것을 기대한다. 이런 비평은 인종과 계급, 심리학, 환경학과 인간의 성문제 등에 영향을 끼친다."}],
+[131,"누구와 관련된 내용인가?",FIO4,3,{b:"(1) 본문들을 재평가하여 여성 차별주의를 역사적, 사회적으로 입증하여 여성의 긍정적인 이미지를 제시하려고 한다.\n(2) 성경의 가부장제에 도전한 본문들에 관심을 가지고 이를 재해석하고 비판하려고 한다. 성경의 성차별주의에 도전하는 신학을 수립하여 여성 이미지에 새로운 활력을 불어넣고자 한다.\n(3) 위의 두 방법을 합하여 여성 차별주의에 대한 자료들을 생생하게 기억하기 위해 이 본문들을 시적, 신학적으로 다시 묘사한다."}],
+[132,"위의 내용은 누구의 주장인가?",FIO4,4,{p:"p132"}],
+[133,"위 ( ㄱ )에 들어갈 말은?",HERM4,1,{p:"p132"}],
+[134,"위 ( ㄷ )에 들어갈 말은?",HERM4,3,{p:"p132"}],
+[135,"다음은 누구에 대한 설명인가?",["류터","데일리","트리블","피오렌자"],2,{b:"초기에는 기독교 안의 변화의 가능성을 기대. 그러나 후기에는 여성들이 일반적으로 사악한 남성들의 유대교-기독교 전통을 떠나서 가부장주의의 부정적인 악을 정복하여 기독교 이후의 신앙을 형성하려는 가장 급진적인 입장을 취함. 류터는 그가 남성다움이란 기만적인 반질서와 그 위에 대립된 여성다움이란 초월적 정신 세계를 이루고자 하는데 이는 고대 영지주의적 유형들과 너무 흡사하다고 비판."}],
+[136,"“사고의 지평”이란 용어와 관련된 사람은?",["프라이","가다머","리꾀르","틸리히"],2],
+[137,"다음은 어느 비평 방법론의 정의인가?",["자료비평","양식비평","사회과학적 비평","독자반응비평"],3,{b:"이 비평 방법은 사회과학의 방법과 자료와 이론들을 구약성경의 본문에 적용시켜서 본문과 고대 이스라엘 사회의 조직 관계를 연구하고 본문에서 사회의 삶의 형태를 드러내며 이 형태에 비추어서 현대 사회에 대한 신학적 교훈을 찾으려는 방법론이다."}],
+[138,"사회과학적 비평을 영어로 바르게 표현한 것은?",RH4,4],
+[139,"다음은 어느 비평 방법론의 정의인가?",RR4,2,{b:"The communication process by means of texts can be described in terms of the basic relationships between sender, message, and receiver. Historical studies as a general rule tend to concentrate on the relationship between sender and message, structural studies on the text itself, and Reader Response Theory (hereafter RRT) on the interaction between text and receiver(s). Although the approach developed by RRT has its origins in the field of general literary studies, it is becoming increasingly prominent in the interpretation of biblical material.\n— Lategan, Bernard G. ‘Reader Response Theory,’ ABD 5 (1992), 625."}],
+[140,"다음은 어느 비평 방법론에 대한 평가인가?",RR4,2,{b:"가. 일반 문학에 대한 연구방법론을 성경에 적용시켜 성경 본문과 진지한 상호작용을 촉진시킨다.\n나. 자유롭게 본문의 뜻을 이해할 수 있게 하며 다양한 기교와 방법들을 수용할 수 있게 한다.\n다. 더욱 전통적인 성경 연구와 문학 연구의 방법들을 수용하고 이용할 수 있다.\n라. 후기 현대 문학 비평, 여성 신학적 해석 등에 이론적 토대를 제공한다.\n마. 포괄적인 방법론이 아니다.\n바. 문학 중심적이므로 종교적, 역사적 연구 관점에서 적절치 못하다고 판단될 수 있다.\n사. 허구와 같은 문학적 연구 과정의 생성물이라는 인식이 성경 연구에 적용될 수 있는가에 대한 의심을 가진다."}],
+[141,"다음 중 관계없는 단어 하나를 고르시오.",["patriarchy","androcentrism","phallocentrism","feminism"],4],
+[142,"다음은 어떤 용어에 대한 설명인가?",["parallelism","rhetorical criticism","inclusio","merismus"],3,{b:"“한 단락의 시작에서 쓰인 낱말이나 어구나 문장이 그 단락의 끝에서 반복되어 서로 평행선을 이룸으로 시작과 끝의 관계를 식별하는 장치로 쓰임”"}],
+[143,"위 ( ㄱ )에 들어갈 단어는 무엇인가?",LOW4,1,{p:"p143"}],
+[144,"위 ( ㄴ )에 들어갈 단어는 무엇인가?",LOW4,2,{p:"p143"}],
+[145,"위 ( ㄷ )에 들어갈 단어는 무엇인가?",LOW4,3,{p:"p143"}]
+].map(r=>({n:r[0],q:r[1],o:r[2],a:r[3],p:(r[4]||{}).p,b:(r[4]||{}).b}));
+const BY={};Q.forEach(x=>BY[x.n]=x);
+
+const KEY="ot-exegesis-quiz-v1";
+let prefs={shuffle:false,mode:"instant"};
+let S=null; // session: {order,idx,ans,mode,graded,label}
+let view="start";
+let showGrid=false;
+
+function load(){try{const r=localStorage.getItem(KEY);if(r){const d=JSON.parse(r);if(d.prefs)prefs=d.prefs;if(d.S)S=d.S;}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({prefs,S}))}catch(e){}}
+const pad=n=>String(n).padStart(3,"0");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function newSession(nums,label){
+  const order=prefs.shuffle?shuf(nums):nums.slice();
+  S={order,idx:0,ans:{},mode:prefs.mode,graded:false,label};
+  view="quiz";showGrid=false;save();render();window.scrollTo(0,0);
+}
+function answeredCount(){return S.order.filter(n=>S.ans[n]).length}
+function correctCount(){return S.order.filter(n=>S.ans[n]===BY[n].a).length}
+function revealed(n){return S.graded||(S.mode==="instant"&&!!S.ans[n])}
+function inProgress(){return S&&!S.graded&&answeredCount()<S.order.length}
+
+const app=document.getElementById("app");
+function render(){
+  if(view==="start")return renderStart();
+  if(view==="quiz")return renderQuiz();
+  if(view==="result")return renderResult();
+}
+
+function renderStart(){
+  const resume=S&&!S.graded?`<button class="btn ghost" id="resume">이어서 풀기 (${answeredCount()}/${S.order.length})</button>`:"";
+  const lastRes=S&&S.graded?`<button class="btn ghost" id="lastres">지난 결과 보기</button>`:"";
+  app.innerHTML=`<div class="wrap start">
+  <h1>구약석의 방법론<br>기말 객관식 145문항</h1>
+  <p class="sub">2026학년도 2학기 · 정경, 사회과학, 수사, 이야기, 독자반응, 여성주의 비평</p>
+  <div class="field"><div class="field-label">문항 순서</div>
+    <div class="seg" role="group">
+      <button data-k="shuffle" data-v="0" aria-pressed="${!prefs.shuffle}">순서대로<small>001번부터 145번까지</small></button>
+      <button data-k="shuffle" data-v="1" aria-pressed="${prefs.shuffle}">섞기<small>매번 다른 순서로</small></button>
+    </div></div>
+  <div class="field"><div class="field-label">채점 방식</div>
+    <div class="seg" role="group">
+      <button data-k="mode" data-v="instant" aria-pressed="${prefs.mode==="instant"}">바로 확인<small>고를 때마다 정답 표시</small></button>
+      <button data-k="mode" data-v="exam" aria-pressed="${prefs.mode==="exam"}">끝나고 채점<small>다 푼 뒤 한꺼번에</small></button>
+    </div></div>
+  <div class="actions">
+    <button class="btn" id="go">${S&&!S.graded?"새로 시작":"시작하기"}</button>${resume}${lastRes}
+  </div>
+  <p class="note">푼 기록은 이 기기의 브라우저에 저장되어, 창을 닫아도 이어서 풀 수 있습니다.</p>
+  </div>`;
+  app.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k;prefs[k]=k==="shuffle"?b.dataset.v==="1":b.dataset.v;save();renderStart();
+  });
+  document.getElementById("go").onclick=()=>{
+    if(S&&!S.graded&&answeredCount()>0&&!confirm("진행 중인 기록이 지워집니다. 새로 시작할까요?"))return;
+    newSession(Q.map(x=>x.n),"전체");
+  };
+  const r=document.getElementById("resume");if(r)r.onclick=()=>{view="quiz";render();};
+  const l=document.getElementById("lastres");if(l)l.onclick=()=>{view="result";render();};
+}
+
+function bar(){
+  const done=answeredCount(),tot=S.order.length;
+  const meta=S.mode==="instant"||S.graded?`맞힘 ${correctCount()} · 푼 문항 ${done}/${tot}`:`푼 문항 ${done}/${tot}`;
+  return `<div class="bar"><div class="bar-in">
+    <button class="iconbtn" id="home" aria-label="처음 화면">처음</button>
+    <div class="bar-title">${S.label==="전체"?"구약석의 방법론":"틀린 문제 다시 풀기"}</div>
+    <div class="bar-meta">${meta}</div>
+  </div><div class="track"><i style="width:${(done/tot*100).toFixed(1)}%"></i></div></div>`;
+}
+
+function renderQuiz(){
+  const n=S.order[S.idx],x=BY[n],my=S.ans[n],rv=revealed(n);
+  let ctx="";
+  if(x.p){const P=PS[x.p];ctx=`<div class="passage"><span class="ptag">[${P.r}] 공통 지문</span>${esc(P.t)}</div>`;}
+  if(x.b)ctx+=`<div class="passage">${esc(x.b)}</div>`;
+  const opts=x.o.map((t,i)=>{
+    const k=i+1;let c="opt";
+    if(rv){if(k===x.a)c+=" right";else if(k===my)c+=" wrong";}
+    else if(k===my)c+=" sel";
+    return `<button class="${c}" data-k="${k}" ${rv?"disabled":""}><span class="mk">${MK[i]}</span><span>${esc(t)}</span></button>`;
+  }).join("");
+  let verdict="";
+  if(rv){
+    if(!my)verdict=`<div class="verdict no">풀지 않음 · 정답 ${MK[x.a-1]}</div>`;
+    else if(my===x.a)verdict=`<div class="verdict ok">정답입니다 · ${MK[x.a-1]}</div>`;
+    else verdict=`<div class="verdict no">오답 · 정답은 ${MK[x.a-1]}</div>`;
+  }
+  const last=S.idx===S.order.length-1;
+  let nextLabel=last?(S.graded?"결과 보기":(S.mode==="exam"?"채점하기":"결과 보기")):"다음";
+  const grid=showGrid?`<div class="gridpanel"><p>번호를 누르면 해당 문항으로 이동합니다.</p><div class="grid">${S.order.map((m,i)=>{
+    let c="";const a=S.ans[m];
+    if(revealed(m)){c=a===BY[m].a?"right":"wrong";}else if(a)c="done";
+    if(i===S.idx)c+=" cur";
+    return `<button class="${c}" data-i="${i}">${pad(m)}</button>`}).join("")}</div></div>`:"";
+  app.innerHTML=bar()+`<div class="wrap">
+    <div class="qhead"><span class="qnum">${pad(n)}</span><span class="qpos">${S.idx+1} / ${S.order.length}번째</span></div>
+    ${ctx}
+    <p class="qtext">${esc(x.q)}</p>
+    <div class="opts">${opts}</div>
+    ${verdict}
+    <div class="nav">
+      <button class="btn ghost" id="prev" ${S.idx===0?"disabled":""}>이전</button>
+      <button class="btn" id="next">${nextLabel}</button>
+    </div>
+    <div class="nav"><button class="btn ghost" id="tg">${showGrid?"문항 목록 닫기":"문항 목록"}</button></div>
+    ${grid}
+  </div>`;
+  document.getElementById("home").onclick=()=>{view="start";render();};
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>choose(+b.dataset.k));
+  document.getElementById("prev").onclick=()=>go(S.idx-1);
+  document.getElementById("next").onclick=next;
+  document.getElementById("tg").onclick=()=>{showGrid=!showGrid;renderQuiz();};
+  app.querySelectorAll(".grid button").forEach(b=>b.onclick=()=>go(+b.dataset.i));
+}
+function choose(k){
+  const n=S.order[S.idx];if(revealed(n))return;
+  S.ans[n]=k;save();renderQuiz();
+}
+function go(i){if(i<0||i>=S.order.length)return;S.idx=i;save();renderQuiz();window.scrollTo(0,0);}
+function next(){
+  if(S.idx<S.order.length-1)return go(S.idx+1);
+  if(!S.graded){
+    const left=S.order.length-answeredCount();
+    if(left>0&&!confirm(`아직 풀지 않은 문항이 ${left}개 있습니다. 채점할까요?`))return;
+    S.graded=true;save();
+  }
+  view="result";render();window.scrollTo(0,0);
+}
+
+function renderResult(){
+  const tot=S.order.length,ok=correctCount();
+  const wrong=S.order.filter(n=>S.ans[n]!==BY[n].a).sort((a,b)=>a-b);
+  const list=wrong.length?`<ul>${wrong.map(n=>{const x=BY[n],m=S.ans[n];
+    return `<li><button data-n="${n}"><span class="n">${pad(n)}</span><span class="t">${esc(x.q)}</span><span class="a">${m?MK[m-1]:"미응답"} → <b>${MK[x.a-1]}</b></span></button></li>`}).join("")}</ul>`:`<p class="empty">틀린 문항이 없습니다.</p>`;
+  app.innerHTML=`<div class="wrap result">
+    <p class="score">${ok}<span> / ${tot}</span></p>
+    <p class="pct">정답률 ${Math.round(ok/tot*100)}%${S.label!=="전체"?" · 틀린 문제 다시 풀기":""}</p>
+    <div class="actions">
+      ${wrong.length?`<button class="btn" id="retry">틀린 문제 다시 풀기 (${wrong.length})</button>`:""}
+      <button class="btn ghost" id="restart">처음부터 다시</button>
+    </div>
+    <div class="wl"><h2>틀린 문항</h2>${list}</div>
+  </div>`;
+  const r=document.getElementById("retry");if(r)r.onclick=()=>newSession(wrong,"오답");
+  document.getElementById("restart").onclick=()=>{view="start";S=null;save();render();};
+  app.querySelectorAll(".wl li button").forEach(b=>b.onclick=()=>{S.idx=S.order.indexOf(+b.dataset.n);view="quiz";render();window.scrollTo(0,0);});
+}
+
+document.addEventListener("keydown",e=>{
+  if(view!=="quiz"||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(["1","2","3","4"].includes(e.key))choose(+e.key);
+  else if(e.key==="ArrowRight")next();
+  else if(e.key==="ArrowLeft")go(S.idx-1);
+});
+
+load();render();
+</script>
+</body>
+</html>
